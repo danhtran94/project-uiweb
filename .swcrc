@@ -1,0 +1,41 @@
+{
+  "$schema": "https://swc.rs/schema.json",
+  "jsc": {
+    "experimental": {
+      "plugins": [
+        [
+          "@lingui/swc-plugin",
+          {
+            "runtimeModules": {
+              "i18n": ["@lingui/core", "i18n"],
+              "Trans": ["@lingui/react", "Trans"]
+            }
+          }
+        ]
+      ]
+    },
+    "parser": {
+      "syntax": "typescript",
+      "decorators": false,
+      "tsx": true
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic",
+        "pragma": "React.createElement",
+        "pragmaFrag": "React.Fragment",
+        "throwIfNamespace": true,
+        "useBuiltins": false,
+        "development": true,
+        "refresh": true
+      },
+      "optimizer": {
+        "globals": {
+          "vars": {
+            "__DEBUG__": "true"
+          }
+        }
+      }
+    }
+  }
+}

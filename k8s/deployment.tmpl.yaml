@@ -1,0 +1,76 @@
+# UNLICENSED License
+# Copyright (c) 2024, INIT Technology Solutions LLC
+# All rights reserved.
+
+# Created Date: Sunday, September 29th 2024, 1:59:20 am
+# Author: danhtran94
+
+# Redistribution and use in source and binary forms, with or without
+# modification, are not permitted in any form.
+
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS AS
+# IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+# THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+# PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+# CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+# THE POSSIBILITY OF SUCH DAMAGE.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-ui-$DRONE_COMMIT_BRANCH
+  namespace: production
+spec:
+  selector:
+    matchLabels:
+      app: web-ui-$DRONE_COMMIT_BRANCH
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-ui-$DRONE_COMMIT_BRANCH
+    spec:
+      containers:
+        - name: web-ui
+          image: ghcr.io/init-tech-solution/project-ui:$DRONE_COMMIT_SHA
+
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: www-web-$DRONE_COMMIT_BRANCH
+  namespace: production
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: web-ui-$DRONE_COMMIT_BRANCH
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: http-route-web-ui-$DRONE_COMMIT_BRANCH
+  namespace: production
+spec:
+  parentRefs:
+    - name: eg
+      namespace: envoy-gateway-system
+  hostnames:
+    - "ute.1company.io"
+  rules:
+    - backendRefs:
+        - name: www-web-$DRONE_COMMIT_BRANCH
+          port: 80

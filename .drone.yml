@@ -1,0 +1,66 @@
+kind: pipeline
+type: kubernetes
+name: production
+
+# node_selector:
+#   env: cicd
+
+# tolerations:
+#   - key: "env"
+#     operator: "Equal"
+#     value: "cicd"
+#     effect: "NoSchedule"
+
+trigger:
+  event:
+    - push
+  branch:
+    - main
+
+steps:
+  - name: build ui
+    image: node:22.9.0-slim
+    privileged: true
+    volumes:
+      - name: yarn-cache
+        path: /home/node/.yarn
+    environment:
+      API_URL: "https://project.domain"
+    commands:
+      # - "yarn clean & yarn cache clean"
+      - "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install"
+      - "yarn build"
+
+  - name: build & publish docker image
+    image: plugins/docker
+    privileged: true
+    volumes:
+      - name: docker-cache
+        path: /var/lib/docker
+    settings:
+      registry: ghcr.io
+      repo: ghcr.io/init-tech-solution/project-ui
+      dockerfile: k8s/Dockerfile
+      tags: ${DRONE_COMMIT_SHA}
+      username: init-ci-bot
+      password:
+        from_secret: ghcr_token
+
+  - name: deploy to production
+    # when:
+    #   target:
+    #     - production
+    image: gcr.io/google.com/cloudsdktool/google-cloud-cli:489.0.0-slim
+    commands:
+      - "apt-get update && apt-get install curl gettext-base kubectl -yf"
+      - "cd k8s && envsubst < deployment.tmpl.yaml > deployment.yaml && kubectl apply -f deployment.yaml"
+
+volumes:
+  - name: yarn-cache
+    claim:
+      name: pvc-ci-drone-yarn-cache
+      read_only: false
+  - name: docker-cache
+    claim:
+      name: pvc-ci-drone-docker-cache
+      read_only: false
