@@ -58,8 +58,8 @@ const config = defineConfig({
       },
       {
         test: /\.css$/,
-        use: ["builtin:lightningcss-loader"],
-        type: "css/auto",
+        use: ["postcss-loader"],
+        type: "css",
       },
       {
         test: /\.(jpe?g|gif|png|ttf|wolf)/,
