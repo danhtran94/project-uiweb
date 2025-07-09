@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import { LayoutMain } from "@/layouts/LayoutMain";
+import { HomePage } from "@/pages/HomePage";
 
 export const AppRoutes = () => {
   const location = useLocation();
@@ -10,7 +11,7 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<LayoutMain />}>
-        <Route index element={<div>Home</div>} />
+        <Route index element={<HomePage />} />
       </Route>
     </Routes>
   );

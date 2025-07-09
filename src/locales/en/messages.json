@@ -1,1 +1,150 @@
-{}
+{
+  "PPh9Iq": {
+    "message": "Accessibility First",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        51
+      ]
+    ],
+    "translation": ""
+  },
+  "77IaEc": {
+    "message": "Built with React 19, TypeScript, and the latest web technologies for optimal performance and developer experience.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        42
+      ]
+    ],
+    "translation": ""
+  },
+  "YBkATS": {
+    "message": "Current language: {0}",
+    "placeholders": {
+      "0": [
+        "i18n.locale"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        76
+      ]
+    ],
+    "translation": ""
+  },
+  "yPQS9U": {
+    "message": "Designed with accessibility in mind using React Aria components to ensure inclusive user experiences.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        54
+      ]
+    ],
+    "translation": ""
+  },
+  "W4xV5A": {
+    "message": "Full internationalization support with multiple languages and locale-specific formatting.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        66
+      ]
+    ],
+    "translation": ""
+  },
+  "c3b0B0": {
+    "message": "Get Started",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        28
+      ]
+    ],
+    "translation": ""
+  },
+  "phEOPG": {
+    "message": "International Ready",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        63
+      ]
+    ],
+    "translation": ""
+  },
+  "ZSDQwQ": {
+    "translation": "",
+    "message": "Language:",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/blocks/LanguageSwitcher.tsx",
+        19
+      ]
+    ]
+  },
+  "NgeSlx": {
+    "message": "Learn More",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        31
+      ]
+    ],
+    "translation": ""
+  },
+  "g1P+af": {
+    "message": "Modern Technology",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        39
+      ]
+    ],
+    "translation": ""
+  },
+  "EdZwnV": {
+    "message": "Modern, accessible, and high-performance solutions built with React 19, Tailwind CSS, and clean architecture principles.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        20
+      ]
+    ],
+    "translation": ""
+  },
+  "f1n4t5": {
+    "message": "Welcome to Project Solutions",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        16
+      ]
+    ],
+    "translation": ""
+  }
+}

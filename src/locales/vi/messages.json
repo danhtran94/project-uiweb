@@ -1,1 +1,150 @@
-{}
+{
+  "PPh9Iq": {
+    "message": "Accessibility First",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        51
+      ]
+    ],
+    "translation": "Ưu tiên Khả năng Tiếp cận"
+  },
+  "77IaEc": {
+    "message": "Built with React 19, TypeScript, and the latest web technologies for optimal performance and developer experience.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        42
+      ]
+    ],
+    "translation": "Được xây dựng với React 19, TypeScript và các công nghệ web mới nhất để đạt hiệu suất tối ưu và trải nghiệm phát triển tốt nhất."
+  },
+  "YBkATS": {
+    "message": "Current language: {0}",
+    "placeholders": {
+      "0": [
+        "i18n.locale"
+      ]
+    },
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        76
+      ]
+    ],
+    "translation": "Ngôn ngữ hiện tại: {0}"
+  },
+  "yPQS9U": {
+    "message": "Designed with accessibility in mind using React Aria components to ensure inclusive user experiences.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        54
+      ]
+    ],
+    "translation": "Được thiết kế với khả năng tiếp cận trong tâm trí sử dụng các thành phần React Aria để đảm bảo trải nghiệm người dùng toàn diện."
+  },
+  "W4xV5A": {
+    "message": "Full internationalization support with multiple languages and locale-specific formatting.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        66
+      ]
+    ],
+    "translation": "Hỗ trợ quốc tế hóa đầy đủ với nhiều ngôn ngữ và định dạng theo địa phương."
+  },
+  "c3b0B0": {
+    "message": "Get Started",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        28
+      ]
+    ],
+    "translation": "Bắt đầu"
+  },
+  "phEOPG": {
+    "message": "International Ready",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        63
+      ]
+    ],
+    "translation": "Sẵn sàng Quốc tế"
+  },
+  "ZSDQwQ": {
+    "translation": "Ngôn ngữ:",
+    "message": "Language:",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/blocks/LanguageSwitcher.tsx",
+        19
+      ]
+    ]
+  },
+  "NgeSlx": {
+    "message": "Learn More",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        31
+      ]
+    ],
+    "translation": "Tìm hiểu thêm"
+  },
+  "g1P+af": {
+    "message": "Modern Technology",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        39
+      ]
+    ],
+    "translation": "Công nghệ Hiện đại"
+  },
+  "EdZwnV": {
+    "message": "Modern, accessible, and high-performance solutions built with React 19, Tailwind CSS, and clean architecture principles.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        20
+      ]
+    ],
+    "translation": "Giải pháp hiện đại, dễ tiếp cận và hiệu suất cao được xây dựng với React 19, Tailwind CSS và các nguyên tắc kiến trúc sạch."
+  },
+  "f1n4t5": {
+    "message": "Welcome to Project Solutions",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        16
+      ]
+    ],
+    "translation": "Chào mừng đến với Project Solutions"
+  }
+}
