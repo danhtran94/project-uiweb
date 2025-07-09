@@ -1,11 +1,11 @@
 # project.solutions Website
 
-Modern, accessible, and high-performance website for project built with React 19, Tailwind CSS, and Clean Architecture principles.
+Modern, accessible, and high-performance website for project built with React 19, CSS Modules, and Clean Architecture principles.
 
 ## 🚀 Technologies
 
 - **Framework**: React 19 with TypeScript
-- **Styling**: Tailwind CSS 4 with styled-tix
+- **Styling**: CSS Modules with styled-tix
 - **Bundling**: Rspack (high-performance alternative to Webpack)
 - **State Management**: Redux Toolkit
 - **Routing**: React Router DOM v7
@@ -71,35 +71,46 @@ yarn dev
 
 ## 🎨 Design System
 
-This project implements the project.solutions design system using Atomic Design principles, with components built for maximum accessibility and reusability.
+This project implements the project.solutions design system using CSS Modules and design tokens, with components built for maximum accessibility and reusability.
 
-### Typography System
+### Design Tokens
 
-Our typography system uses a modular scale of 1.25 with the following font families:
+Design tokens are implemented as CSS custom properties in `src/styles/tokens.css`:
 
-- **Primary**: Inter (UI elements, body text)
-- **Secondary**: DM Sans (marketing, special content)
-- **Serif**: Atlante (editorial content, multilingual)
-- **Monospace**: System monospace (code, technical content)
-
-Typography scales from display (3.815rem) to caption (0.75rem) with carefully defined line heights and letter spacing.
-
-### Color System
-
-- **Background**: Deep blue (#0F172A) with lighter secondary (#1E293B)
-- **Primary Accent**: Amber/gold (#F59E0B)
-- **Text**: Primary (#F8FAFC) and secondary (#94A3B8)
-- **State Colors**: Success, warning, error, and info
+- **Colors**: Semantic color system with slate grays and amber accents
+- **Spacing**: Consistent spacing scale from 0.25rem to 8rem
+- **Typography**: Font sizes, weights, and line heights
+- **Border Radius**: Consistent corner radius values
+- **Shadows**: Layered shadow system for depth
 
 ### Component Architecture
 
-Components follow Atomic Design principles:
+Components follow a modified Atomic Design approach:
 
-1. **Atoms**: Basic UI elements (buttons, inputs, icons)
-2. **Molecules**: Combinations of atoms (form fields, search bars)
-3. **Organisms**: Complex components (navigation bars, headers, cards)
-4. **Templates**: Page layouts without specific content
-5. **Pages**: Specific instances of templates with real content
+1. **Blocks** (`components/blocks/`): Generic reusable components without business logic
+2. **Widgets** (`components/widgets/`): Business-specific components composed from blocks
+3. **Layouts** (`layouts/`): Page-level structures
+4. **Pages** (`pages/`): Complete pages with content
+
+### Styling Approach
+
+We use CSS Modules with BEM methodology and styled-tix for component variants:
+
+- **Scoped Styles**: Each component has its own `.module.css` file
+- **BEM Naming**: Block Element Modifier methodology for clear, semantic class names
+- **Nested Syntax**: PostCSS nested syntax with `&` for better readability
+- **Design Tokens**: CSS custom properties for consistent theming
+- **Variant System**: styled-tix provides type-safe component variants
+- **PostCSS**: Support for imports and nested CSS
+
+#### BEM Methodology with Nested Syntax
+
+BEM (Block Element Modifier) provides a clear naming convention, enhanced with nested syntax:
+
+- **Block**: The main component (e.g., `home-page`, `language-switcher`)
+- **Element**: Parts of the block using `&__element` (e.g., `&__title`, `&__button`)
+- **Modifier**: Variations using `&--modifier` (e.g., `&--primary`, `&--active`)
+- **Nested Structure**: Logical hierarchy that mirrors the component structure
 
 ## 🧠 Architecture
 
@@ -130,39 +141,65 @@ yarn lang-compile
 
 When creating new components:
 
-1. Follow Atomic Design principles
+1. Follow the component hierarchy (blocks → widgets → layouts → pages)
 2. Implement accessibility using React Aria
-3. Use styled-tix with Tailwind for styling
-4. Write comprehensive tests
-5. Document component usage
+3. Use CSS Modules with styled-tix for styling
+4. Leverage design tokens for consistent theming
+5. Write comprehensive tests
+6. Document component usage
 
-### Styling Approach
+### Styling Example
 
-We use `styled-tix` combined with Tailwind CSS:
+We use CSS Modules with BEM methodology, nested syntax, and styled-tix for component variants:
+
+```css
+/* Button.module.css - BEM with nested syntax */
+.button {
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--border-radius-lg);
+  font-weight: var(--font-weight-semibold);
+  transition: var(--transition-colors);
+  border: none;
+  cursor: pointer;
+
+  &--primary {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+
+    &:hover {
+      background-color: var(--color-accent-hover);
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+
+    &:hover {
+      background-color: var(--color-slate-800);
+    }
+  }
+}
+```
 
 ```typescript
-export const Button = tix(
-  {
-    name: "Button",
-    base: tw`rounded-md px-4 py-2 font-medium`,
-    variants: {
-      variant: {
-        primary: tw`bg-amber-500 text-slate-900 hover:bg-amber-600`,
-        secondary: tw`bg-slate-700 text-white hover:bg-slate-600`,
-      },
-      size: {
-        sm: tw`px-3 py-1 text-sm`,
-        md: tw`px-4 py-2 text-base`,
-        lg: tw`px-5 py-3 text-lg`,
-      },
-    },
-    defaults: {
-      variant: "primary",
-      size: "md",
+// Button.tsx
+import { tix } from "@/libs/tix";
+import styles from "./Button.module.css";
+
+export const Button = tix({
+  base: styles["button"],
+  variants: {
+    variant: {
+      primary: styles["button--primary"],
+      secondary: styles["button--secondary"],
     },
   },
-  "button"
-);
+  defaults: {
+    variant: "primary",
+  },
+}, "button");
 ```
 
 ## 🚢 Building and Deployment
@@ -216,9 +253,9 @@ The architectural patterns and implementation strategies in this project are inf
 ### Technology-Specific Implementations
 
 - **[react_typescript_design_system.md]**: Type-safe implementation patterns for design systems in React and TypeScript
-- **[styled-tix-analysis.md]**: Variant-based styling with Tailwind CSS using the styled-tix library:
+- **[styled-tix-analysis.md]**: Variant-based styling with CSS Modules using the styled-tix library:
   - Variant system (boolean, object, and function variants)
-  - Component polymorphism
+  - Component polymorphism with CSS Modules
   - Type safety and extensibility
 
 ### Accessibility Implementation
@@ -226,8 +263,8 @@ The architectural patterns and implementation strategies in this project are inf
 - **[react-aria-overview.md]**: Accessibility-first component implementation with React Aria
 - **[react-aria-components-list.md]**: Available unstyled components for accessible UI development
 - **[react-aria-styling-guide.md]**: Approaches for styling React Aria components:
-  - CSS Class Names
+  - CSS Class Names with CSS Modules
   - Data Attributes for States
   - Render Props for dynamic styling
-  - CSS Variables
-  - Tailwind CSS integration
+  - CSS Variables (design tokens)
+  - styled-tix integration

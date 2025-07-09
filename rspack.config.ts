@@ -40,6 +40,17 @@ const config = defineConfig({
     extensions: ["...", ".js", ".ts", ".tsx", ".jsx"],
   },
   module: {
+    parser: {
+      'css/auto': {
+        namedExports: false,
+      },
+    },
+    generator: {
+      'css/auto': {
+        // localIdentName: '[local]-[hash:base64:6]',
+        localIdentName: '[local]',
+      },
+    },
     rules: [
       {
         test: /\.([tj]sx?)$/,
@@ -59,7 +70,7 @@ const config = defineConfig({
       {
         test: /\.css$/,
         use: ["postcss-loader"],
-        type: "css",
+        type: "css/auto",
       },
       {
         test: /\.(jpe?g|gif|png|ttf|wolf)/,

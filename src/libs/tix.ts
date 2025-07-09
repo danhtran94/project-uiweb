@@ -1,41 +1,49 @@
 import { newTix } from "styled-tix";
-import { extendTailwindMerge } from "tailwind-merge";
 
 export * from "styled-tix";
 export type * from "styled-tix/dist/esm/types";
 
-const twMergeConfig = {
-  extend: {
-    classGroups: {
-      "font-family": [
-        {
-          font: ["inter"],
-        },
-      ],
-      "font-size": [
-        {
-          text: [
-            "head26",
-            "head18",
-            "head15",
-            "head12",
-            "note12",
-            "body13",
-            "body15",
-          ],
-        },
-      ],
-      "bg-color": [
-        {
-          second: ["dirt", "skin", "earth", "leaf", "tree", "honey"],
-        },
-      ],
-    },
-  },
+// Simple class merger for CSS modules - just joins classes with spaces
+const cssModulesMerger = (classes: string[]) => classes.filter(Boolean).join(" ");
+
+export const tix = newTix(cssModulesMerger);
+
+// Helper function to create tix components with CSS modules
+export const createTix = <T extends Record<string, any>>(
+  config: Parameters<typeof tix>[0],
+  element: Parameters<typeof tix>[1],
+  styles?: T
+) => {
+  // If styles object is provided, map class names to CSS modules
+  if (styles) {
+    const processedConfig = {
+      ...config,
+      base: styles[config.base as string] || config.base,
+      variants: config.variants ? processVariants(config.variants, styles) : undefined,
+    };
+    return tix(processedConfig, element);
+  }
+  
+  return tix(config, element);
 };
 
-export const tix = newTix(extendTailwindMerge(twMergeConfig));
-// export const tix = newTix(twMerge);
-// export const tix = newTix((classes) => classes.join(" "));
-// You can use any classes mixer you want.
-// here we will use `tailwind-merge` for tailwindcss
+// Helper function to process variants with CSS modules
+function processVariants(variants: any, styles: Record<string, any>) {
+  const processedVariants: any = {};
+  
+  for (const [variantName, variantValues] of Object.entries(variants)) {
+    processedVariants[variantName] = {};
+    
+    for (const [key, value] of Object.entries(variantValues as any)) {
+      if (typeof value === 'string') {
+        processedVariants[variantName][key] = styles[value] || value;
+      } else {
+        processedVariants[variantName][key] = value;
+      }
+    }
+  }
+  
+  return processedVariants;
+}
+
+export default createTix;

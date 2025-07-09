@@ -1,10 +1,25 @@
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
+import { tix } from "@/libs/tix";
+import styles from "./LanguageSwitcher.module.css";
 
 const languages = [
   { code: "en", name: "English", nativeName: "English" },
   { code: "vi", name: "Vietnamese", nativeName: "Tiếng Việt" },
 ];
+
+const Button = tix({
+  base: styles["language-switcher__button"],
+  variants: {
+    active: {
+      "true": styles["language-switcher__button--active"] || "",
+      "false": styles["language-switcher__button--inactive"] || "",
+    },
+  },
+  defaults: {
+    active: "false",
+  },
+}, "button");
 
 export const LanguageSwitcher = () => {
   const { i18n } = useLingui();
@@ -14,23 +29,19 @@ export const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="flex items-center space-x-2">
-      <span className="text-sm text-slate-400">
+    <div className={styles["language-switcher"]}>
+      <span className={styles["language-switcher__label"]}>
         <Trans>Language:</Trans>
       </span>
-      <div className="flex space-x-1">
+      <div className={styles["language-switcher__buttons"]}>
         {languages.map((language) => (
-          <button
+          <Button
             key={language.code}
+            active={i18n.locale === language.code ? "true" : "false"}
             onClick={() => handleLanguageChange(language.code)}
-            className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
-              i18n.locale === language.code
-                ? "bg-amber-500 text-slate-900"
-                : "bg-slate-700 text-slate-300 hover:bg-slate-600"
-            }`}
           >
             {language.nativeName}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

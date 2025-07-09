@@ -6,7 +6,7 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        51
+        68
       ]
     ],
     "translation": "Ưu tiên Khả năng Tiếp cận"
@@ -18,7 +18,7 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        42
+        59
       ]
     ],
     "translation": "Được xây dựng với React 19, TypeScript và các công nghệ web mới nhất để đạt hiệu suất tối ưu và trải nghiệm phát triển tốt nhất."
@@ -34,7 +34,7 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        76
+        93
       ]
     ],
     "translation": "Ngôn ngữ hiện tại: {0}"
@@ -46,7 +46,7 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        54
+        71
       ]
     ],
     "translation": "Được thiết kế với khả năng tiếp cận trong tâm trí sử dụng các thành phần React Aria để đảm bảo trải nghiệm người dùng toàn diện."
@@ -58,7 +58,7 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        66
+        83
       ]
     ],
     "translation": "Hỗ trợ quốc tế hóa đầy đủ với nhiều ngôn ngữ và định dạng theo địa phương."
@@ -70,7 +70,7 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        28
+        45
       ]
     ],
     "translation": "Bắt đầu"
@@ -82,22 +82,22 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        63
+        80
       ]
     ],
     "translation": "Sẵn sàng Quốc tế"
   },
   "ZSDQwQ": {
-    "translation": "Ngôn ngữ:",
     "message": "Language:",
     "placeholders": {},
     "comments": [],
     "origin": [
       [
         "src/components/blocks/LanguageSwitcher.tsx",
-        19
+        34
       ]
-    ]
+    ],
+    "translation": "Ngôn ngữ:"
   },
   "NgeSlx": {
     "message": "Learn More",
@@ -106,7 +106,7 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        31
+        48
       ]
     ],
     "translation": "Tìm hiểu thêm"
@@ -118,10 +118,22 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        39
+        56
       ]
     ],
     "translation": "Công nghệ Hiện đại"
+  },
+  "+szVtE": {
+    "translation": "Giải pháp hiện đại, dễ tiếp cận và hiệu suất cao được xây dựng với React 19, CSS modules và các nguyên tắc kiến trúc sạch.",
+    "message": "Modern, accessible, and high-performance solutions built with React 19, CSS modules, and clean architecture principles.",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/pages/HomePage.tsx",
+        37
+      ]
+    ]
   },
   "EdZwnV": {
     "message": "Modern, accessible, and high-performance solutions built with React 19, Tailwind CSS, and clean architecture principles.",
@@ -133,7 +145,20 @@
         20
       ]
     ],
-    "translation": "Giải pháp hiện đại, dễ tiếp cận và hiệu suất cao được xây dựng với React 19, Tailwind CSS và các nguyên tắc kiến trúc sạch."
+    "translation": "Giải pháp hiện đại, dễ tiếp cận và hiệu suất cao được xây dựng với React 19, Tailwind CSS và các nguyên tắc kiến trúc sạch.",
+    "obsolete": true
+  },
+  "8rQfIj": {
+    "translation": "Chủ đề:",
+    "message": "Theme:",
+    "placeholders": {},
+    "comments": [],
+    "origin": [
+      [
+        "src/components/blocks/ThemeToggle.tsx",
+        12
+      ]
+    ]
   },
   "f1n4t5": {
     "message": "Welcome to Project Solutions",
@@ -142,7 +167,7 @@
     "origin": [
       [
         "src/pages/HomePage.tsx",
-        16
+        33
       ]
     ],
     "translation": "Chào mừng đến với Project Solutions"

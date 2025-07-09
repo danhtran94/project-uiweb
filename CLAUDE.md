@@ -21,7 +21,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Technology Stack
 - **Frontend**: React 19 with TypeScript, React Router DOM v7
 - **Build Tool**: Rspack (high-performance webpack alternative) with SWC
-- **Styling**: Tailwind CSS v4 with styled-tix for component variants
+- **Styling**: CSS Modules with styled-tix for component variants
 - **State Management**: Redux Toolkit with typed hooks
 - **i18n**: Lingui for internationalization (English/Vietnamese)
 - **Accessibility**: React Aria components
@@ -65,8 +65,11 @@ src/
 - Slices follow standard Redux Toolkit patterns
 
 #### Styling System
-- Tailwind CSS v4 with custom design tokens in `theme-tokens.css`
-- styled-tix for component variants and polymorphism
+- CSS Modules with BEM methodology for scoped, semantic class names
+- CSS custom properties (variables) for design tokens in `src/styles/tokens.css`
+- styled-tix for component variants and polymorphism with CSS modules
+- PostCSS with plugins for import and nested CSS support
+- BEM naming convention: Block (`component-name`), Element (`component-name__element`), Modifier (`component-name__element--modifier`)
 - Path alias `@/` points to `src/`
 - SVG icons use `.icon.svg` suffix and are processed by @svgr/webpack
 

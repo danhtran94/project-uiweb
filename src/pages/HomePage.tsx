@@ -1,44 +1,61 @@
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { LanguageSwitcher } from "@/components/blocks/LanguageSwitcher";
+import { ThemeToggle } from "@/components/blocks/ThemeToggle";
+import { tix } from "@/libs/tix";
+import styles from "./HomePage.module.css";
+
+const Button = tix({
+  base: styles["home-page__button"],
+  variants: {
+    variant: {
+      primary: styles["home-page__button--primary"] || "",
+      secondary: styles["home-page__button--secondary"] || "",
+    },
+  },
+  defaults: {
+    variant: "primary",
+  },
+}, "button");
 
 export const HomePage = () => {
   const { i18n } = useLingui();
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
-      <div className="container mx-auto px-4 py-16">
-        <div className="mb-8 flex justify-end">
+    <div className={styles["home-page"]}>
+      <div className={styles["home-page__container"]}>
+        <div className={styles["home-page__header"]}>
+          <ThemeToggle />
           <LanguageSwitcher />
         </div>
-        <div className="text-center">
-          <h1 className="mb-6 text-4xl font-bold text-amber-400 md:text-6xl">
+        <div className={styles["home-page__content"]}>
+          <h1 className={styles["home-page__title"]}>
             <Trans>Welcome to Project Solutions</Trans>
           </h1>
 
-          <p className="mx-auto mb-8 max-w-3xl text-xl text-slate-300 md:text-2xl">
+          <p className={styles["home-page__description"]}>
             <Trans>
               Modern, accessible, and high-performance solutions built with
-              React 19, Tailwind CSS, and clean architecture principles.
+              React 19, CSS modules, and clean architecture principles.
             </Trans>
           </p>
 
-          <div className="mb-12 flex flex-col justify-center gap-4 sm:flex-row">
-            <button className="rounded-lg bg-amber-500 px-8 py-3 font-semibold text-slate-900 transition-colors hover:bg-amber-600">
+          <div className={styles["home-page__actions"]}>
+            <Button variant="primary">
               <Trans>Get Started</Trans>
-            </button>
-            <button className="rounded-lg border border-amber-400 bg-transparent px-8 py-3 font-semibold text-amber-400 transition-colors hover:bg-slate-800">
+            </Button>
+            <Button variant="secondary">
               <Trans>Learn More</Trans>
-            </button>
+            </Button>
           </div>
         </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
-          <div className="rounded-lg bg-slate-800 p-6">
-            <h3 className="mb-4 text-xl font-semibold text-amber-400">
+        <div className={styles["home-page__features"]}>
+          <div className={styles["home-page__feature"]}>
+            <h3 className={styles["home-page__feature-title"]}>
               <Trans>Modern Technology</Trans>
             </h3>
-            <p className="text-slate-300">
+            <p className={styles["home-page__feature-description"]}>
               <Trans>
                 Built with React 19, TypeScript, and the latest web technologies
                 for optimal performance and developer experience.
@@ -46,11 +63,11 @@ export const HomePage = () => {
             </p>
           </div>
 
-          <div className="rounded-lg bg-slate-800 p-6">
-            <h3 className="mb-4 text-xl font-semibold text-amber-400">
+          <div className={styles["home-page__feature"]}>
+            <h3 className={styles["home-page__feature-title"]}>
               <Trans>Accessibility First</Trans>
             </h3>
-            <p className="text-slate-300">
+            <p className={styles["home-page__feature-description"]}>
               <Trans>
                 Designed with accessibility in mind using React Aria components
                 to ensure inclusive user experiences.
@@ -58,11 +75,11 @@ export const HomePage = () => {
             </p>
           </div>
 
-          <div className="rounded-lg bg-slate-800 p-6">
-            <h3 className="mb-4 text-xl font-semibold text-amber-400">
+          <div className={styles["home-page__feature"]}>
+            <h3 className={styles["home-page__feature-title"]}>
               <Trans>International Ready</Trans>
             </h3>
-            <p className="text-slate-300">
+            <p className={styles["home-page__feature-description"]}>
               <Trans>
                 Full internationalization support with multiple languages and
                 locale-specific formatting.
@@ -71,8 +88,8 @@ export const HomePage = () => {
           </div>
         </div>
 
-        <div className="mt-16 text-center">
-          <p className="text-slate-400">
+        <div className={styles["home-page__footer"]}>
+          <p className={styles["home-page__footer-text"]}>
             <Trans>Current language: {i18n.locale}</Trans>
           </p>
         </div>
