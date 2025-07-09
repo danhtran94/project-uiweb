@@ -1,7 +1,6 @@
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { tix } from "@/libs/tix";
-import styles from "./LanguageSwitcher.module.css";
 
 const languages = [
   { code: "en", name: "English", nativeName: "English" },
@@ -9,11 +8,11 @@ const languages = [
 ];
 
 const Button = tix({
-  base: styles["language-switcher__button"],
+  base: "language-switcher__button",
   variants: {
     active: {
-      "true": styles["language-switcher__button--active"] || "",
-      "false": styles["language-switcher__button--inactive"] || "",
+      "true": "language-switcher__button--active",
+      "false": "language-switcher__button--inactive",
     },
   },
   defaults: {
@@ -29,11 +28,11 @@ export const LanguageSwitcher = () => {
   };
 
   return (
-    <div className={styles["language-switcher"]}>
-      <span className={styles["language-switcher__label"]}>
+    <div className="language-switcher">
+      <span className="language-switcher__label">
         <Trans>Language:</Trans>
       </span>
-      <div className={styles["language-switcher__buttons"]}>
+      <div className="language-switcher__buttons">
         {languages.map((language) => (
           <Button
             key={language.code}

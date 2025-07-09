@@ -1,31 +1,30 @@
 import { Trans } from "@lingui/react/macro";
 import { useTheme } from "@/libs/theme";
-import styles from "./ThemeToggle.module.css";
 
 export const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
 
   return (
-    <div className={styles["theme-toggle"]}>
-      <span className={styles["theme-toggle__label"]}>
+    <div className="theme-toggle">
+      <span className="theme-toggle__label">
         <Trans>Theme:</Trans>
       </span>
       <button
-        className={`${styles["theme-toggle__button"]} ${
-          isDark ? styles["theme-toggle__button--active"] : ""
+        className={`theme-toggle__button ${
+          isDark ? "theme-toggle__button--active" : ""
         }`}
         onClick={toggleTheme}
         aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       >
         <div
-          className={`${styles["theme-toggle__slider"]} ${
-            isDark ? styles["theme-toggle__slider--active"] : ""
+          className={`theme-toggle__slider ${
+            isDark ? "theme-toggle__slider--active" : ""
           }`}
         >
           {isDark ? (
             <svg
-              className={`${styles["theme-toggle__icon"]} ${styles["theme-toggle__icon--moon"]}`}
+              className="theme-toggle__icon theme-toggle__icon--moon"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -33,7 +32,7 @@ export const ThemeToggle = () => {
             </svg>
           ) : (
             <svg
-              className={`${styles["theme-toggle__icon"]} ${styles["theme-toggle__icon--sun"]}`}
+              className="theme-toggle__icon theme-toggle__icon--sun"
               fill="currentColor"
               viewBox="0 0 20 20"
             >

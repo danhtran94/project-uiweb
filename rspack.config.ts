@@ -70,7 +70,7 @@ const config = defineConfig({
       {
         test: /\.css$/,
         use: ["postcss-loader"],
-        type: "css/auto",
+        type: "css",
       },
       {
         test: /\.(jpe?g|gif|png|ttf|wolf)/,

@@ -1,0 +1,61 @@
+/* LayoutMain BEM styles with nested syntax */
+.layout-main {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+
+  &__container {
+    display: flex;
+    max-height: calc(100svh - 3.375rem);
+    flex-grow: 1;
+    overflow-x: auto;
+  }
+
+  &__content {
+    min-width: 480px;
+    flex-grow: 1;
+    overflow-x: auto;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-6);
+    background-color: var(--color-background-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &__main {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  &__footer {
+    padding: var(--space-4) var(--space-6);
+    background-color: var(--color-background-secondary);
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .layout-main {
+    &__content {
+      min-width: 100%;
+    }
+
+    &__header {
+      padding: var(--space-3) var(--space-4);
+    }
+
+    &__footer {
+      padding: var(--space-3) var(--space-4);
+    }
+  }
+}
