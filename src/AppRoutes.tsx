@@ -10,7 +10,7 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<LayoutMain />}>
-        Home
+        <Route index element={<div>Home</div>} />
       </Route>
     </Routes>
   );
