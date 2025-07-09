@@ -1,11 +1,11 @@
 # project.solutions Website
 
-Modern, accessible, and high-performance website for project built with React 19, CSS Modules, and Clean Architecture principles.
+Modern, accessible, and high-performance website for project built with React 19, BEM CSS, and Clean Architecture principles.
 
 ## 🚀 Technologies
 
 - **Framework**: React 19 with TypeScript
-- **Styling**: CSS Modules with styled-tix
+- **Styling**: BEM CSS with styled-tix and design tokens
 - **Bundling**: Rspack (high-performance alternative to Webpack)
 - **State Management**: Redux Toolkit
 - **Routing**: React Router DOM v7
@@ -71,17 +71,18 @@ yarn dev
 
 ## 🎨 Design System
 
-This project implements the project.solutions design system using CSS Modules and design tokens, with components built for maximum accessibility and reusability.
+This project implements the project.solutions design system using BEM CSS methodology and design tokens, with components built for maximum accessibility and reusability.
 
 ### Design Tokens
 
 Design tokens are implemented as CSS custom properties in `src/styles/tokens.css`:
 
-- **Colors**: Semantic color system with slate grays and amber accents
+- **Colors**: Semantic color system with light/dark theme support
 - **Spacing**: Consistent spacing scale from 0.25rem to 8rem
 - **Typography**: Font sizes, weights, and line heights
 - **Border Radius**: Consistent corner radius values
 - **Shadows**: Layered shadow system for depth
+- **Transitions**: Smooth animation properties
 
 ### Component Architecture
 
@@ -94,23 +95,25 @@ Components follow a modified Atomic Design approach:
 
 ### Styling Approach
 
-We use CSS Modules with BEM methodology and styled-tix for component variants:
+We use BEM CSS methodology with nested syntax and styled-tix for component variants:
 
-- **Scoped Styles**: Each component has its own `.module.css` file
 - **BEM Naming**: Block Element Modifier methodology for clear, semantic class names
 - **Nested Syntax**: PostCSS nested syntax with `&` for better readability
 - **Design Tokens**: CSS custom properties for consistent theming
+- **Theme System**: Light/dark theme support with CSS custom properties
 - **Variant System**: styled-tix provides type-safe component variants
 - **PostCSS**: Support for imports and nested CSS
+- **Organized Structure**: Styles organized in `src/styles/` with logical grouping
 
 #### BEM Methodology with Nested Syntax
 
-BEM (Block Element Modifier) provides a clear naming convention, enhanced with nested syntax:
+BEM (Block Element Modifier) provides excellent style isolation and naming conventions:
 
-- **Block**: The main component (e.g., `home-page`, `language-switcher`)
-- **Element**: Parts of the block using `&__element` (e.g., `&__title`, `&__button`)
-- **Modifier**: Variations using `&--modifier` (e.g., `&--primary`, `&--active`)
+- **Block**: The main component (e.g., `home-page`, `language-switcher`, `theme-toggle`)
+- **Element**: Parts of the block using `&__element` (e.g., `&__title`, `&__button`, `&__slider`)
+- **Modifier**: Variations using `&--modifier` (e.g., `&--primary`, `&--active`, `&--inactive`)
 - **Nested Structure**: Logical hierarchy that mirrors the component structure
+- **Theme Support**: CSS custom properties that automatically adapt to light/dark themes
 
 ## 🧠 Architecture
 
@@ -143,17 +146,17 @@ When creating new components:
 
 1. Follow the component hierarchy (blocks → widgets → layouts → pages)
 2. Implement accessibility using React Aria
-3. Use CSS Modules with styled-tix for styling
+3. Use BEM CSS with styled-tix for styling
 4. Leverage design tokens for consistent theming
 5. Write comprehensive tests
 6. Document component usage
 
 ### Styling Example
 
-We use CSS Modules with BEM methodology, nested syntax, and styled-tix for component variants:
+We use BEM CSS methodology with nested syntax and styled-tix for component variants:
 
 ```css
-/* Button.module.css - BEM with nested syntax */
+/* Button.css - BEM with nested syntax */
 .button {
   padding: var(--space-3) var(--space-8);
   border-radius: var(--border-radius-lg);
@@ -177,7 +180,7 @@ We use CSS Modules with BEM methodology, nested syntax, and styled-tix for compo
     border: 1px solid var(--color-accent);
 
     &:hover {
-      background-color: var(--color-slate-800);
+      background-color: var(--color-background-secondary);
     }
   }
 }
@@ -186,14 +189,13 @@ We use CSS Modules with BEM methodology, nested syntax, and styled-tix for compo
 ```typescript
 // Button.tsx
 import { tix } from "@/libs/tix";
-import styles from "./Button.module.css";
 
 export const Button = tix({
-  base: styles["button"],
+  base: "button",
   variants: {
     variant: {
-      primary: styles["button--primary"],
-      secondary: styles["button--secondary"],
+      primary: "button--primary",
+      secondary: "button--secondary",
     },
   },
   defaults: {
@@ -253,9 +255,9 @@ The architectural patterns and implementation strategies in this project are inf
 ### Technology-Specific Implementations
 
 - **[react_typescript_design_system.md]**: Type-safe implementation patterns for design systems in React and TypeScript
-- **[styled-tix-analysis.md]**: Variant-based styling with CSS Modules using the styled-tix library:
+- **[styled-tix-analysis.md]**: Variant-based styling with BEM CSS using the styled-tix library:
   - Variant system (boolean, object, and function variants)
-  - Component polymorphism with CSS Modules
+  - Component polymorphism with BEM classes
   - Type safety and extensibility
 
 ### Accessibility Implementation
@@ -263,7 +265,7 @@ The architectural patterns and implementation strategies in this project are inf
 - **[react-aria-overview.md]**: Accessibility-first component implementation with React Aria
 - **[react-aria-components-list.md]**: Available unstyled components for accessible UI development
 - **[react-aria-styling-guide.md]**: Approaches for styling React Aria components:
-  - CSS Class Names with CSS Modules
+  - CSS Class Names with BEM methodology
   - Data Attributes for States
   - Render Props for dynamic styling
   - CSS Variables (design tokens)

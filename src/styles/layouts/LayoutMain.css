@@ -8,7 +8,7 @@
 
   &__container {
     display: flex;
-    max-height: calc(100svh - 3.375rem);
+    /* max-height: calc(100svh - 3.375rem); */
     flex-grow: 1;
     overflow-x: auto;
   }

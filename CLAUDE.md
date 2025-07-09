@@ -21,7 +21,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Technology Stack
 - **Frontend**: React 19 with TypeScript, React Router DOM v7
 - **Build Tool**: Rspack (high-performance webpack alternative) with SWC
-- **Styling**: CSS Modules with styled-tix for component variants
+- **Styling**: BEM CSS with styled-tix for component variants
 - **State Management**: Redux Toolkit with typed hooks
 - **i18n**: Lingui for internationalization (English/Vietnamese)
 - **Accessibility**: React Aria components
@@ -55,7 +55,7 @@ src/
   - **components/widgets/**: Business-specific components composed from blocks with app logic
   - **layouts/**: Page-level structures (templates)
   - **pages/**: Complete pages with content
-- Uses styled-tix for variant-based styling with Tailwind CSS
+- Uses styled-tix for variant-based styling with BEM CSS
 - All components should be accessible using React Aria
 
 #### State Management
@@ -65,13 +65,15 @@ src/
 - Slices follow standard Redux Toolkit patterns
 
 #### Styling System
-- CSS Modules with BEM methodology for scoped, semantic class names
+- BEM CSS methodology for scoped, semantic class names
 - CSS custom properties (variables) for design tokens in `src/styles/tokens.css`
-- styled-tix for component variants and polymorphism with CSS modules
+- styled-tix for component variants and polymorphism with BEM classes
 - PostCSS with plugins for import and nested CSS support
 - BEM naming convention: Block (`component-name`), Element (`component-name__element`), Modifier (`component-name__element--modifier`)
 - Path alias `@/` points to `src/`
 - SVG icons use `.icon.svg` suffix and are processed by @svgr/webpack
+- Light/dark theme system using CSS custom properties and data attributes
+- Organized CSS structure in `src/styles/` with logical grouping (components/, pages/, layouts/)
 
 #### Internationalization
 - Lingui with macro support for compile-time message extraction

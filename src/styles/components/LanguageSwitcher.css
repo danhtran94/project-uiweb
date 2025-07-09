@@ -24,11 +24,11 @@
     cursor: pointer;
 
     &--inactive {
-      background-color: var(--color-slate-700);
+      background-color: var(--color-background-secondary);
       color: var(--color-text-secondary);
 
       &:hover {
-        background-color: var(--color-slate-600);
+        background-color: var(--color-background-tertiary);
       }
     }
 
