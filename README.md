@@ -52,8 +52,8 @@ yarn dev
 ├── src/
 │   ├── assets/            # Fonts and other assets
 │   ├── components/        # React components
-│   │   ├── blocks/        # Complex reusable components
-│   │   └── widgets/        # Basic shared components
+│   │   ├── blocks/        # Generic reusable components without business logic
+│   │   └── widgets/        # Business-specific components composed from blocks
 │   ├── layouts/           # Page layouts
 │   ├── libs/              # Utility libraries
 │   ├── locales/           # i18n translations
@@ -198,9 +198,8 @@ The architectural patterns and implementation strategies in this project are inf
 
 - **[atomic_design_and_design_systems.md]**: Methodology for building design systems from fundamental building blocks (atoms, molecules, organisms, templates, pages)
 - **[developer_friendly_component_hierarchy.md]**: Modified Atomic Design terminology with clear separation of concerns:
-  - **Unit Components** (components): Basic UI elements without business logic
-  - **Block Components** (components/blocks): Combinations of units with generic props
-  - **Widget Components** (components/widgets): Domain-specific components with business logic
+  - **Block Components** (components/blocks): Generic reusable components without business logic
+  - **Widget Components** (components/widgets): Business-specific components composed from blocks with app logic
   - **Layout Components** (layouts): Page-level structures
   - **Page Components** (pages): Complete pages with content
 
