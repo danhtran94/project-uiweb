@@ -2,9 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+IMPORTANT: @~/.claude/agents/ai-pair-programming-partner/CLAUDE.md
+
 ## Development Commands
 
 ### Core Development Tasks
+
 - `yarn dev` - Start development server on port 8080 with hot reloading
 - `yarn build` - Build for production (includes TypeScript checking and cleanup)
 - `yarn lang-extract` - Extract i18n messages for translation
@@ -13,12 +16,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `yarn deps-upgrade` - Update dependencies and install
 
 ### Code Quality
+
 - No specific lint/test commands configured - use `tsc --noEmit` for type checking
 - Build command includes TypeScript checking: `tsc --noEmit`
 
 ## Architecture Overview
 
 ### Technology Stack
+
 - **Frontend**: React 19 with TypeScript, React Router DOM v7
 - **Build Tool**: Rspack (high-performance webpack alternative) with SWC
 - **Styling**: BEM CSS with CVA (Class Variance Authority) for component variants
@@ -28,6 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Package Manager**: Yarn 4
 
 ### Project Structure
+
 ```
 src/
 ├── components/           # React components (atomic design)
@@ -50,6 +56,7 @@ src/
 ### Key Patterns
 
 #### Component Architecture
+
 - Follows Atomic Design with modified hierarchy:
   - **components/blocks/**: Generic reusable components without business logic
   - **components/widgets/**: Business-specific components composed from blocks with app logic
@@ -59,12 +66,14 @@ src/
 - All components should be accessible using React Aria
 
 #### State Management
+
 - Redux Toolkit with typed hooks: `useSelector`, `useDispatch`
 - Custom selector hooks with shallow equality checking
 - Store configured with serializable check disabled
 - Slices follow standard Redux Toolkit patterns
 
 #### Styling System
+
 - BEM CSS methodology for scoped, semantic class names
 - CSS custom properties (variables) for design tokens in `src/styles/tokens.css`
 - CVA for component variants and polymorphism with BEM classes, with clsx for conditional classnames
@@ -76,11 +85,13 @@ src/
 - Organized CSS structure in `src/styles/` with logical grouping (components/, pages/, layouts/)
 
 #### Internationalization
+
 - Lingui with macro support for compile-time message extraction
 - Messages stored in `locales/en/` and `locales/vi/`
 - Extract messages before building for production
 
 ### Development Notes
+
 - Uses Rspack for fast builds with SWC transpilation
 - TypeScript strict mode enabled with path aliases
 - Development server runs on port 8080 with hot reloading
