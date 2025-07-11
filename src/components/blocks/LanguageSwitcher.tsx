@@ -1,24 +1,41 @@
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
-import { tix } from "@/libs/tix";
+import { cva, type VariantProps, cn } from "@/libs/utils";
+import { forwardRef } from "react";
 
 const languages = [
   { code: "en", name: "English", nativeName: "English" },
   { code: "vi", name: "Vietnamese", nativeName: "Tiếng Việt" },
 ];
 
-const Button = tix({
+const buttonVariants = cva({
   base: "language-switcher__button",
   variants: {
     active: {
-      "true": "language-switcher__button--active",
-      "false": "language-switcher__button--inactive",
+      true: "language-switcher__button--active",
+      false: "language-switcher__button--inactive",
     },
   },
-  defaults: {
-    active: "false",
+  defaultVariants: {
+    active: false,
   },
-}, "button");
+});
+
+type ButtonProps = React.ComponentProps<"button"> & VariantProps<typeof buttonVariants>;
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ active, className, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(buttonVariants({ active }), className)}
+        {...props}
+      />
+    );
+  }
+);
+
+Button.displayName = "Button";
 
 export const LanguageSwitcher = () => {
   const { i18n } = useLingui();
@@ -36,7 +53,7 @@ export const LanguageSwitcher = () => {
         {languages.map((language) => (
           <Button
             key={language.code}
-            active={i18n.locale === language.code ? "true" : "false"}
+            active={i18n.locale === language.code}
             onClick={() => handleLanguageChange(language.code)}
           >
             {language.nativeName}

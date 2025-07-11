@@ -5,7 +5,7 @@ Modern, accessible, and high-performance website for project built with React 19
 ## 🚀 Technologies
 
 - **Framework**: React 19 with TypeScript
-- **Styling**: BEM CSS with styled-tix and design tokens
+- **Styling**: BEM CSS with CVA (Class Variance Authority) and design tokens
 - **Bundling**: Rspack (high-performance alternative to Webpack)
 - **State Management**: Redux Toolkit
 - **Routing**: React Router DOM v7
@@ -95,13 +95,13 @@ Components follow a modified Atomic Design approach:
 
 ### Styling Approach
 
-We use BEM CSS methodology with nested syntax and styled-tix for component variants:
+We use BEM CSS methodology with nested syntax and CVA for component variants:
 
 - **BEM Naming**: Block Element Modifier methodology for clear, semantic class names
 - **Nested Syntax**: PostCSS nested syntax with `&` for better readability
 - **Design Tokens**: CSS custom properties for consistent theming
 - **Theme System**: Light/dark theme support with CSS custom properties
-- **Variant System**: styled-tix provides type-safe component variants
+- **Variant System**: CVA provides type-safe component variants with clsx for conditional classnames
 - **PostCSS**: Support for imports and nested CSS
 - **Organized Structure**: Styles organized in `src/styles/` with logical grouping
 
@@ -146,14 +146,14 @@ When creating new components:
 
 1. Follow the component hierarchy (blocks → widgets → layouts → pages)
 2. Implement accessibility using React Aria
-3. Use BEM CSS with styled-tix for styling
+3. Use BEM CSS with CVA for styling
 4. Leverage design tokens for consistent theming
 5. Write comprehensive tests
 6. Document component usage
 
 ### Styling Example
 
-We use BEM CSS methodology with nested syntax and styled-tix for component variants:
+We use BEM CSS methodology with nested syntax and CVA for component variants:
 
 ```css
 /* Button.css - BEM with nested syntax */
@@ -188,9 +188,10 @@ We use BEM CSS methodology with nested syntax and styled-tix for component varia
 
 ```typescript
 // Button.tsx
-import { tix } from "@/libs/tix";
+import { cva, type VariantProps, cn } from "@/libs/utils";
+import { forwardRef } from "react";
 
-export const Button = tix({
+const buttonVariants = cva({
   base: "button",
   variants: {
     variant: {
@@ -198,10 +199,26 @@ export const Button = tix({
       secondary: "button--secondary",
     },
   },
-  defaults: {
+  defaultVariants: {
     variant: "primary",
   },
-}, "button");
+});
+
+type ButtonProps = React.ComponentProps<"button"> & VariantProps<typeof buttonVariants>;
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant, className, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(buttonVariants({ variant }), className)}
+        {...props}
+      />
+    );
+  }
+);
+
+Button.displayName = "Button";
 ```
 
 ## 🚢 Building and Deployment
@@ -255,10 +272,10 @@ The architectural patterns and implementation strategies in this project are inf
 ### Technology-Specific Implementations
 
 - **[react_typescript_design_system.md]**: Type-safe implementation patterns for design systems in React and TypeScript
-- **[styled-tix-analysis.md]**: Variant-based styling with BEM CSS using the styled-tix library:
-  - Variant system (boolean, object, and function variants)
+- **CVA (Class Variance Authority)**: Variant-based styling with BEM CSS using CVA:
+  - Type-safe variant system with defaultVariants
   - Component polymorphism with BEM classes
-  - Type safety and extensibility
+  - Conditional classnames with clsx integration
 
 ### Accessibility Implementation
 
@@ -269,4 +286,4 @@ The architectural patterns and implementation strategies in this project are inf
   - Data Attributes for States
   - Render Props for dynamic styling
   - CSS Variables (design tokens)
-  - styled-tix integration
+  - CVA integration with clsx for conditional styling

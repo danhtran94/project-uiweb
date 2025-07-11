@@ -1,21 +1,29 @@
-import { tix, withProps, tw } from "@/libs/tix";
+import { cva, type VariantProps, cn } from "@/libs/utils";
+import { forwardRef } from "react";
 
 import * as cps from "@/components";
 
-export const _CHANGE_ME = tix(
-  {
-    name: "_CHANGE_ME",
-    variants: {},
-  },
-  "div",
-  (styled) => (props, ref) => {
-    const [El, _props] = styled(props);
+const componentVariants = cva({
+  base: "component-change-me",
+  variants: {},
+  defaultVariants: {},
+});
 
+type ComponentProps = React.ComponentProps<"div"> & VariantProps<typeof componentVariants>;
+
+export const _CHANGE_ME = forwardRef<HTMLDivElement, ComponentProps>(
+  ({ className, ...props }, ref) => {
     return (
-      <El {..._props} ref={ref}>
+      <div
+        ref={ref}
+        className={cn(componentVariants(), className)}
+        {...props}
+      >
         <input type="text" placeholder="Search..." />
         <button>Search</button>
-      </El>
+      </div>
     );
   }
 );
+
+_CHANGE_ME.displayName = "_CHANGE_ME";

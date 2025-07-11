@@ -5373,7 +5373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^2.0.0":
+"clsx@npm:^2.0.0, clsx@npm:^2.1.1":
   version: 2.1.1
   resolution: "clsx@npm:2.1.1"
   checksum: 10/cdfb57fa6c7649bbff98d9028c2f0de2f91c86f551179541cf784b1cfdc1562dcb951955f46d54d930a3879931a980e32a46b598acaea274728dbe068deca919
@@ -5663,6 +5663,20 @@ __metadata:
   version: 3.1.3
   resolution: "csstype@npm:3.1.3"
   checksum: 10/f593cce41ff5ade23f44e77521e3a1bcc2c64107041e1bf6c3c32adc5187d0d60983292fda326154d20b01079e24931aa5b08e4467cc488b60bb1e7f6d478ade
+  languageName: node
+  linkType: hard
+
+"cva@npm:^1.0.0-beta.4":
+  version: 1.0.0-beta.4
+  resolution: "cva@npm:1.0.0-beta.4"
+  dependencies:
+    clsx: "npm:^2.1.1"
+  peerDependencies:
+    typescript: ">= 4.5.5"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10/8028c27f0c746193f8ac17d82a474c0c8456294c048e13db9263e8b86c159da292858770e3561217a19a77575c8667190e8bb897faa33462381e54f82056e130
   languageName: node
   linkType: hard
 
@@ -9026,7 +9040,9 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^8.19.1"
     "@typescript-eslint/parser": "npm:^8.19.1"
     axios: "npm:^1.10.0"
+    clsx: "npm:^2.1.1"
     cross-env: "npm:^7.0.3"
+    cva: "npm:^1.0.0-beta.4"
     eslint: "npm:8.x"
     eslint-config-google: "npm:^0.14.0"
     eslint-config-prettier: "npm:^9.1.0"
@@ -9047,7 +9063,6 @@ __metadata:
     react-router-dom: "npm:^7.6.3"
     remeda: "npm:^2.25.0"
     rimraf: "npm:^6.0.1"
-    styled-tix: "npm:^2.6.3"
     typescript: "npm:^5.8.3"
     typescript-eslint: "npm:^8.19.1"
   languageName: unknown
@@ -10218,15 +10233,6 @@ __metadata:
   version: 3.1.1
   resolution: "strip-json-comments@npm:3.1.1"
   checksum: 10/492f73e27268f9b1c122733f28ecb0e7e8d8a531a6662efbd08e22cccb3f9475e90a1b82cab06a392f6afae6d2de636f977e231296400d0ec5304ba70f166443
-  languageName: node
-  linkType: hard
-
-"styled-tix@npm:^2.6.3":
-  version: 2.6.3
-  resolution: "styled-tix@npm:2.6.3"
-  peerDependencies:
-    react: ^19.1.0
-  checksum: 10/53d0d04cb83d3cec63c553a1f3ea37799b195a96a32f39356e4984a49944675f36182d001fc00cd66733f8da03c0c88e79e6183dcebdb207bfec514aa2cfb9ef
   languageName: node
   linkType: hard
 

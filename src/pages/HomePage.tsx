@@ -2,9 +2,10 @@ import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { LanguageSwitcher } from "@/components/blocks/LanguageSwitcher";
 import { ThemeToggle } from "@/components/blocks/ThemeToggle";
-import { tix } from "@/libs/tix";
+import { cva, type VariantProps, cn } from "@/libs/utils";
+import { forwardRef } from "react";
 
-const Button = tix({
+const buttonVariants = cva({
   base: "home-page__button",
   variants: {
     variant: {
@@ -12,10 +13,26 @@ const Button = tix({
       secondary: "home-page__button--secondary",
     },
   },
-  defaults: {
+  defaultVariants: {
     variant: "primary",
   },
-}, "button");
+});
+
+type ButtonProps = React.ComponentProps<"button"> & VariantProps<typeof buttonVariants>;
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant, className, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(buttonVariants({ variant }), className)}
+        {...props}
+      />
+    );
+  }
+);
+
+Button.displayName = "Button";
 
 export const HomePage = () => {
   const { i18n } = useLingui();

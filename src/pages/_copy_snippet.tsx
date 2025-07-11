@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, forwardRef } from "react";
 import { useParams } from "react-router-dom";
-import { tix, tw } from "@/libs/tix";
+import { cva, type VariantProps, cn } from "@/libs/utils";
 
 import { useDispatch, useSelector } from "@/model/store";
 import * as changeMe from "@/model/slices/_copy_snippet";
@@ -9,14 +9,16 @@ import * as cps from "@/components";
 import * as bls from "@/components/blocks";
 import * as shr from "@/components/shared";
 
-export const _CHANGE_ME = tix(
-  {
-    name: "Page_CHANGE_ME",
-    base: tw``,
-    variants: {},
-  },
-  "div",
-  (styled) => (props, ref) => {
+const pageVariants = cva({
+  base: "page-change-me",
+  variants: {},
+  defaultVariants: {},
+});
+
+type PageProps = React.ComponentProps<"div"> & VariantProps<typeof pageVariants>;
+
+export const _CHANGE_ME = forwardRef<HTMLDivElement, PageProps>(
+  ({ className, ...props }, ref) => {
     const dispatch = useDispatch();
 
     const data = useSelector(changeMe.selectById(0));
@@ -28,7 +30,14 @@ export const _CHANGE_ME = tix(
         .catch((err) => {});
     }, []);
 
-    const [El, _props] = styled(props);
-    return <El {..._props} ref={ref}></El>;
+    return (
+      <div
+        ref={ref}
+        className={cn(pageVariants(), className)}
+        {...props}
+      />
+    );
   }
 );
+
+_CHANGE_ME.displayName = "_CHANGE_ME";

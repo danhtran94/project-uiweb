@@ -21,7 +21,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Technology Stack
 - **Frontend**: React 19 with TypeScript, React Router DOM v7
 - **Build Tool**: Rspack (high-performance webpack alternative) with SWC
-- **Styling**: BEM CSS with styled-tix for component variants
+- **Styling**: BEM CSS with CVA (Class Variance Authority) for component variants
 - **State Management**: Redux Toolkit with typed hooks
 - **i18n**: Lingui for internationalization (English/Vietnamese)
 - **Accessibility**: React Aria components
@@ -55,7 +55,7 @@ src/
   - **components/widgets/**: Business-specific components composed from blocks with app logic
   - **layouts/**: Page-level structures (templates)
   - **pages/**: Complete pages with content
-- Uses styled-tix for variant-based styling with BEM CSS
+- Uses CVA (Class Variance Authority) for variant-based styling with BEM CSS
 - All components should be accessible using React Aria
 
 #### State Management
@@ -67,7 +67,7 @@ src/
 #### Styling System
 - BEM CSS methodology for scoped, semantic class names
 - CSS custom properties (variables) for design tokens in `src/styles/tokens.css`
-- styled-tix for component variants and polymorphism with BEM classes
+- CVA for component variants and polymorphism with BEM classes, with clsx for conditional classnames
 - PostCSS with plugins for import and nested CSS support
 - BEM naming convention: Block (`component-name`), Element (`component-name__element`), Modifier (`component-name__element--modifier`)
 - Path alias `@/` points to `src/`

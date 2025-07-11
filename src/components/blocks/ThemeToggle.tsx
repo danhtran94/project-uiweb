@@ -1,5 +1,6 @@
 import { Trans } from "@lingui/react/macro";
 import { useTheme } from "@/libs/theme";
+import { cn } from "@/libs/utils";
 
 export const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
@@ -11,16 +12,18 @@ export const ThemeToggle = () => {
         <Trans>Theme:</Trans>
       </span>
       <button
-        className={`theme-toggle__button ${
-          isDark ? "theme-toggle__button--active" : ""
-        }`}
+        className={cn(
+          "theme-toggle__button",
+          isDark && "theme-toggle__button--active"
+        )}
         onClick={toggleTheme}
         aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       >
         <div
-          className={`theme-toggle__slider ${
-            isDark ? "theme-toggle__slider--active" : ""
-          }`}
+          className={cn(
+            "theme-toggle__slider",
+            isDark && "theme-toggle__slider--active"
+          )}
         >
           {isDark ? (
             <svg
