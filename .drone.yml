@@ -39,10 +39,10 @@ steps:
         path: /var/lib/docker
     settings:
       registry: ghcr.io
-      repo: ghcr.io/init-tech-solution/project-ui
+      repo: ghcr.io/danhtran94/project-ui
       dockerfile: k8s/Dockerfile
       tags: ${DRONE_COMMIT_SHA}
-      username: init-ci-bot
+      username: danhtran94
       password:
         from_secret: ghcr_token
 

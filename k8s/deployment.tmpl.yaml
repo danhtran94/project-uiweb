@@ -1,5 +1,5 @@
 # UNLICENSED License
-# Copyright (c) 2024, INIT Technology Solutions LLC
+# Copyright (c) 2024, Tran Thanh Danh
 # All rights reserved.
 
 # Created Date: Sunday, September 29th 2024, 1:59:20 am
@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
         - name: web-ui
-          image: ghcr.io/init-tech-solution/project-ui:$DRONE_COMMIT_SHA
+          image: ghcr.io/danhtran94/project-ui:$DRONE_COMMIT_SHA
 
           ports:
             - name: http
@@ -69,7 +69,7 @@ spec:
     - name: eg
       namespace: envoy-gateway-system
   hostnames:
-    - "ute.1company.io"
+    - "name.domain"
   rules:
     - backendRefs:
         - name: www-web-$DRONE_COMMIT_BRANCH
