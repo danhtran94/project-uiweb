@@ -1,6 +1,2 @@
-@import './styles/tokens.css';
-@import './styles/reset.css';
-@import './styles/layouts/LayoutMain.css';
-@import './styles/components/LanguageSwitcher.css';
-@import './styles/components/ThemeToggle.css';
-@import './styles/pages/HomePage.css';
+@import "./styles/tokens.css";
+@import "./styles/reset.css";

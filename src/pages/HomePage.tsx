@@ -1,3 +1,5 @@
+import "@/styles/pages/HomePage.css";
+
 import { Trans } from "@lingui/react/macro";
 import { useLingui } from "@lingui/react";
 import { LanguageSwitcher } from "@/components/blocks/LanguageSwitcher";
@@ -18,7 +20,8 @@ const buttonVariants = cva({
   },
 });
 
-type ButtonProps = React.ComponentProps<"button"> & VariantProps<typeof buttonVariants>;
+type ButtonProps = React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant, className, ...props }, ref) => {

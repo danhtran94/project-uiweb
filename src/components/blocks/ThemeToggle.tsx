@@ -1,3 +1,5 @@
+import "@/styles/components/ThemeToggle.css";
+
 import { Trans } from "@lingui/react/macro";
 import { useTheme } from "@/libs/theme";
 import { cn } from "@/libs/utils";
