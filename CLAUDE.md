@@ -65,6 +65,16 @@ src/
 - Uses CVA (Class Variance Authority) for variant-based styling with BEM CSS
 - All components should be accessible using React Aria
 
+#### Developer Onboarding Templates
+
+- **Copy Snippet Pattern**: Template files for new developers and team members
+  - `src/components/_copy_snippet.tsx` - Component template with CVA + BEM patterns
+  - `src/pages/_copy_snippet.tsx` - Page component template with Redux integration  
+  - `src/model/slices/_copy_snippet.ts` - Redux slice template with async thunks
+- **Usage**: Copy these files as starting points for new features, following established patterns
+- **Standards**: Templates demonstrate TypeScript typing, naming conventions, and architectural patterns
+- **Pattern Examples**: Shows proper forwardRef usage, CVA variants, Redux integration, and BEM CSS structure
+
 #### State Management
 
 - Redux Toolkit with typed hooks: `useSelector`, `useDispatch`

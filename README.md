@@ -241,49 +241,42 @@ kubectl apply -f k8s/deployment.yaml
 
 ## 📚 Further Documentation
 
-- [Design System Documentation](../design-systems/README.md)
-- [Component API Reference](./docs/components.md)
-- [Redux Store Documentation](./docs/redux.md)
-- [Accessibility Guidelines](./docs/accessibility.md)
+- [Development Guidelines](./CLAUDE.md) - Comprehensive guide for working with this codebase
+- [Copy Snippet Templates](./src/components/_copy_snippet.tsx) - Templates for new developers
+- [Design Tokens](./src/styles/tokens.css) - CSS custom properties for theming
+- [Project Structure](./CLAUDE.md#project-structure) - Detailed architecture overview
 
-## 📖 Architecture Reference Resources
+## 🧪 Developer Onboarding
 
-The architectural patterns and implementation strategies in this project are informed by the following key reference resources:
+### Copy Snippet Templates
 
-### Design System & Component Patterns
+This project includes template files to help new developers get started quickly:
 
-- **[atomic_design_and_design_systems.md]**: Methodology for building design systems from fundamental building blocks (atoms, molecules, organisms, templates, pages)
-- **[developer_friendly_component_hierarchy.md]**: Modified Atomic Design terminology with clear separation of concerns:
-  - **Block Components** (components/blocks): Generic reusable components without business logic
-  - **Widget Components** (components/widgets): Business-specific components composed from blocks with app logic
-  - **Layout Components** (layouts): Page-level structures
-  - **Page Components** (pages): Complete pages with content
+- **Component Template** (`src/components/_copy_snippet.tsx`): Shows CVA + BEM patterns with proper TypeScript typing
+- **Page Template** (`src/pages/_copy_snippet.tsx`): Demonstrates Redux integration and page structure  
+- **Redux Slice Template** (`src/model/slices/_copy_snippet.ts`): Example of async thunks and state management
 
-### Design Tokens
+### Usage
 
-- **[design_tokens_foundation.md]**: Implementation of visual design attributes as named entities:
-  - Color tokens (brand, UI states, text, background)
-  - Typography tokens (font families, weights, sizes, line heights)
-  - Spacing tokens (margin, padding scales)
-  - Border and shadow tokens
-  - Animation and motion tokens
-  - Responsive breakpoint tokens
+1. Copy the appropriate template file for your feature
+2. Rename and modify according to your component needs
+3. Follow the established patterns for consistency
+4. Update imports and exports as needed
 
-### Technology-Specific Implementations
+## 🏗️ Architecture Principles
 
-- **[react_typescript_design_system.md]**: Type-safe implementation patterns for design systems in React and TypeScript
-- **CVA (Class Variance Authority)**: Variant-based styling with BEM CSS using CVA:
-  - Type-safe variant system with defaultVariants
-  - Component polymorphism with BEM classes
-  - Conditional classnames with clsx integration
+### Modified Atomic Design
 
-### Accessibility Implementation
+- **Blocks** (`components/blocks/`): Generic, reusable components without business logic
+- **Widgets** (`components/widgets/`): Business-specific components composed from blocks  
+- **Layouts** (`layouts/`): Page-level structures and templates
+- **Pages** (`pages/`): Complete pages with content and routing
 
-- **[react-aria-overview.md]**: Accessibility-first component implementation with React Aria
-- **[react-aria-components-list.md]**: Available unstyled components for accessible UI development
-- **[react-aria-styling-guide.md]**: Approaches for styling React Aria components:
-  - CSS Class Names with BEM methodology
-  - Data Attributes for States
-  - Render Props for dynamic styling
-  - CSS Variables (design tokens)
-  - CVA integration with clsx for conditional styling
+### Design Token System
+
+Our design system uses CSS custom properties for consistent theming:
+
+- **Semantic Tokens**: Abstract color, spacing, and typography values
+- **Theme Support**: Automatic light/dark mode switching via `data-theme` attribute
+- **Responsive Design**: Consistent breakpoints and spacing scales
+- **Accessibility**: High contrast ratios and accessible color combinations
