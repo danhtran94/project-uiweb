@@ -1,32 +1,54 @@
 import "@/styles/components/ThemeToggle.css";
 
 import { Trans } from "@lingui/react/macro";
+import { cva, type VariantProps, cn } from "@/libs/utils";
+import { forwardRef } from "react";
 import { useTheme } from "@/libs/theme";
-import { cn } from "@/libs/utils";
 
-export const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
-  const isDark = theme === "dark";
+const buttonVariants = cva({
+  base: "theme-toggle__button",
+  variants: {
+    active: {
+      true: "theme-toggle__button--active",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+});
 
-  return (
-    <div className="theme-toggle">
-      <span className="theme-toggle__label">
-        <Trans>Theme:</Trans>
-      </span>
-      <button
-        className={cn(
-          "theme-toggle__button",
-          isDark && "theme-toggle__button--active"
-        )}
-        onClick={toggleTheme}
-        aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      >
-        <div
-          className={cn(
-            "theme-toggle__slider",
-            isDark && "theme-toggle__slider--active"
-          )}
+const sliderVariants = cva({
+  base: "theme-toggle__slider",
+  variants: {
+    active: {
+      true: "theme-toggle__slider--active",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+});
+
+type ThemeToggleProps = React.ComponentProps<"div"> & VariantProps<typeof buttonVariants>;
+
+export const ThemeToggle = forwardRef<HTMLDivElement, ThemeToggleProps>(
+  ({ className, ...props }, ref) => {
+    const { theme, toggleTheme } = useTheme();
+    const isDark = theme === "dark";
+
+    return (
+      <div ref={ref} className={cn("theme-toggle", className)} {...props}>
+        <span className="theme-toggle__label">
+          <Trans>Theme:</Trans>
+        </span>
+        <button
+          className={buttonVariants({ active: isDark })}
+          onClick={toggleTheme}
+          aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
         >
+          <div className={sliderVariants({ active: isDark })}>
           {isDark ? (
             <svg
               className="theme-toggle__icon theme-toggle__icon--moon"
@@ -48,8 +70,11 @@ export const ThemeToggle = () => {
               />
             </svg>
           )}
-        </div>
-      </button>
-    </div>
-  );
-};
+          </div>
+        </button>
+      </div>
+    );
+  }
+);
+
+ThemeToggle.displayName = "ThemeToggle";
